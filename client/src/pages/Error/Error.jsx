@@ -1,33 +1,22 @@
 import React from "react";
-import ExploreTweets from "../../Components/ExploreTweets/ExploreTweet";
-import LeftSidebar from "../../Components/LeftSidebar/LeftSidebars";
-import RightSidebar from "../../Components/RightSidebar/RightSidebars";
+import { Link } from "react-router-dom";
 
-import { useSelector } from "react-redux";
-import Signin from "../Signin/Signin";
-
-const Explore = () => {
-  const { currentUser } = useSelector((state) => state.user);
-
+const Error = () => {
   return (
-    <>
-      {!currentUser ? (
-        <Signin />
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-4">
-          <div className="px-6">
-            <LeftSidebar />
-          </div>
-          <div className="col-span-2 border-x-2 border-t-slate-800 px-6">
-            <ExploreTweets />
-          </div>
-          <div className="px-6">
-            <RightSidebar />
-          </div>
-        </div>
-      )}
-    </>
+    <div className="text-center my-8 space-y-5">
+      <h2 className="font-bold text-4xl">Error, page not found</h2>
+      <p className="pb-2">
+        Please go back to login <br />
+      </p>
+
+      <Link
+        to="/signin"
+        className="bg-blue-500 py-1 px-3 rounded-full text-white"
+      >
+        Login
+      </Link>
+    </div>
   );
 };
 
-export default Explore;
+export default Error;

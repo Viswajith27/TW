@@ -4,7 +4,7 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import Explore from "./pages/Explore/Explore";
-import Signin from "./pages/Signin/Signin";
+import Signin from "./pages/Signin/Signins";
 import Navbar from "./Components/Navbar/Navbars";
 import Error from "./pages/Error/Error";
 

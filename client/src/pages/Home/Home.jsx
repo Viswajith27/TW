@@ -2,7 +2,7 @@ import React from "react";
 import LeftSidebar from "../../Components/LeftSidebar/LeftSidebars";
 import MainTweet from "../../Components/MainTweet/MainTweets";
 import RightSidebar from "../../Components/RightSidebar/RightSidebars";
-import Signin from "../Signin/Signin";
+import Signin from "../Signin/Signins";
 
 import { useSelector } from "react-redux";
 

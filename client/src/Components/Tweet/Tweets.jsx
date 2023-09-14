@@ -71,6 +71,7 @@ const Tweet = ({ tweet, setData }) => {
           </div>
 
           <p>{tweet.description}</p>
+          
           <button onClick={handleLike}>
             {tweet.likes.includes(currentUser._id) ? (
               <FavoriteIcon className="mr-2 my-2 cursor-pointer"></FavoriteIcon>

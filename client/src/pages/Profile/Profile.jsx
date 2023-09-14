@@ -10,6 +10,7 @@ import Tweet from "../../Components/Tweet/Tweets";
 
 import { following } from "../../redux/userSlice";
 
+
 const Profile = () => {
   const [open, setOpen] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
@@ -93,6 +94,7 @@ const Profile = () => {
                 Follow
               </button>
             )}
+              
           </div>
           <div className="mt-6">
             {userTweets &&

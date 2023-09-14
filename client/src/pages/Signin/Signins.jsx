@@ -10,7 +10,7 @@ const Signin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,6 +22,11 @@ const Signin = () => {
       dispatch(loginSuccess(res.data));
       navigate("/");
     } catch (err) {
+      if (err.response && err.response.status === 404) {
+        setError("User not found"); // Set error message
+      } else {
+        setError("An error occurred"); // Set a generic error message for other errors
+      }
       dispatch(loginFailed());
     }
   };
@@ -46,7 +51,7 @@ const Signin = () => {
   return (
     <form className="bg-gray-200 flex flex-col py-12 px-8 rounded-lg w-8/12 md:w-6/12 mx-auto gap-10">
       <h2 className="text-3xl font-bold text-center">Sign in to Twitter</h2>
-
+      {error && <p className="text-red-500">{error}</p>} {/* Display error message if present */}
       <input
         onChange={(e) => setUsername(e.target.value)}
         type="text"
