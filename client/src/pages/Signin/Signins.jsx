@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { loginStart, loginSuccess, loginFailed } from "../../redux/userSlice";
 
 import { useNavigate } from "react-router-dom";
+const apiUrl = "https://twitter-clone-9g2w.onrender.com/api";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
@@ -18,7 +19,10 @@ const Signin = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post("/auth/signin", { username, password });
+      const res = await axios.post("${apiUrl}/auth/signin", {
+        username,
+        password,
+      });
       dispatch(loginSuccess(res.data));
       navigate("/");
     } catch (err) {
@@ -36,7 +40,7 @@ const Signin = () => {
     dispatch(loginStart());
 
     try {
-      const res = await axios.post("/auth/signup", {
+      const res = await axios.post("${apiUrl}/auth/signup", {
         username,
         email,
         password,
@@ -51,7 +55,8 @@ const Signin = () => {
   return (
     <form className="bg-gray-200 flex flex-col py-12 px-8 rounded-lg w-8/12 md:w-6/12 mx-auto gap-10">
       <h2 className="text-3xl font-bold text-center">Sign in to Twitter</h2>
-      {error && <p className="text-red-500">{error}</p>} {/* Display error message if present */}
+      {error && <p className="text-red-500">{error}</p>}{" "}
+      {/* Display error message if present */}
       <input
         onChange={(e) => setUsername(e.target.value)}
         type="text"
@@ -64,16 +69,13 @@ const Signin = () => {
         placeholder="password"
         className="text-xl py-2 rounded-full px-4"
       />
-
       <button
         className="text-xl py-2 rounded-full px-4 bg-blue-500 text-white"
         onClick={handleLogin}
       >
         Sign in
       </button>
-
       <p className="text-center text-xl">Don't have an account?</p>
-
       <input
         onChange={(e) => setUsername(e.target.value)}
         type="text"
@@ -93,7 +95,6 @@ const Signin = () => {
         placeholder="password"
         className="text-xl py-2 rounded-full px-4"
       />
-
       <button
         onClick={handleSignup}
         className="text-xl py-2 rounded-full px-4 bg-blue-500 text-white"
