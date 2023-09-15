@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { loginStart, loginSuccess, loginFailed } from "../../redux/userSlice";
 
 import { useNavigate } from "react-router-dom";
-const apiUrl = "https://twitter-clone-9g2w.onrender.com/api";
+//const apiUrl = "https://twitter-clone-9g2w.onrender.com/api";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
@@ -19,10 +19,13 @@ const Signin = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post(`${apiUrl}/auth/signin`, {
-        username,
-        password,
-      });
+      const res = await axios.post(
+        "https://twitter-clone-9g2w.onrender.com/api/auth/signin",
+        {
+          username,
+          password,
+        }
+      );
       dispatch(loginSuccess(res.data));
       navigate("/");
     } catch (err) {
@@ -40,11 +43,14 @@ const Signin = () => {
     dispatch(loginStart());
 
     try {
-      const res = await axios.post(`${apiUrl}/auth/signup`, {
-        username,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://twitter-clone-9g2w.onrender.com/api/auth/signup",
+        {
+          username,
+          email,
+          password,
+        }
+      );
       dispatch(loginSuccess(res.data));
       navigate("/");
     } catch (err) {
