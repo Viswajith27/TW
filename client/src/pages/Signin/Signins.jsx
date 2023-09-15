@@ -19,7 +19,7 @@ const Signin = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post("${apiUrl}/auth/signin", {
+      const res = await axios.post(`${apiUrl}/auth/signin`, {
         username,
         password,
       });
@@ -40,7 +40,7 @@ const Signin = () => {
     dispatch(loginStart());
 
     try {
-      const res = await axios.post("${apiUrl}/auth/signup", {
+      const res = await axios.post(`${apiUrl}/auth/signup`, {
         username,
         email,
         password,
