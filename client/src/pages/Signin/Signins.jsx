@@ -20,7 +20,7 @@ const Signin = () => {
     dispatch(loginStart());
     try {
       const res = await axios.post(
-        "https://twitter-clone-9g2w.onrender.com/auth/signin",
+        "https://twitter-clone-9g2w.onrender.com/api/auth/signin",
         {
           username,
           password,
