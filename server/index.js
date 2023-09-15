@@ -2,18 +2,26 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import cors from "cors"; // Import the 'cors' middleware
 
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auths.js";
 import tweetRoutes from "./routes/tweets.js";
-const cors = require('cors');
 
 const app = express();
 dotenv.config();
-const corsOptions = {
-  origin: 'hhttps://twitter-clone-9g2w.onrender.com/api',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-};
+var cors = require('cors')
+
+// Use the 'cors' middleware to enable CORS
+app.use(
+  cors({
+    origin: ["https://twitter-clone-frontend-woad.vercel.app"],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  })
+);
+
+
 const connect = () => {
   mongoose.set("strictQuery", false);
   mongoose
@@ -25,7 +33,7 @@ const connect = () => {
       throw err;
     });
 };
-app.use(cors(corsOptions))
+app.get('/', (req, res) => { res.json("hello"); });
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/users", userRoutes);
@@ -34,5 +42,5 @@ app.use("/api/tweets", tweetRoutes);
 
 app.listen(8000, () => {
   connect();
-  console.log("Listening to port 8000");
+  console.log("Listening on port 8000");
 });
