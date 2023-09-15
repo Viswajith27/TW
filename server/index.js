@@ -11,7 +11,7 @@ const cors = require('cors');
 const app = express();
 dotenv.config();
 const corsOptions = {
-  origin: 'https://twitter-final-6sqg.onrender.com/api',
+  origin: 'hhttps://twitter-clone-9g2w.onrender.com/api',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 };
 const connect = () => {
